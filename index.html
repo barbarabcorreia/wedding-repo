@@ -6,15 +6,16 @@
     <title>Bárbara & Tomás - 1 de Agosto de 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Brittany';
+            src: url('fonts/BrittanySignatureScript.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        @font-face {
-            font-family: 'Brittany';
-            src: url('https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/brittanysignature/BrittanySignature-Regular.ttf') format('truetype');
         }
 
         :root {
@@ -22,51 +23,50 @@
             --green: #4a542a;
             --pink: #f3a6a0;
             --blue: #35465e;
-            --black: #000000;
             --cream: #fdfbf7;
         }
 
         body {
             font-family: 'Lato', sans-serif;
             background-color: var(--cream);
-            color: var(--black);
+            color: #333;
             overflow-x: hidden;
         }
 
-        .floral-corner {
+        /* Floral borders - placeholders for your images */
+        .floral-left, .floral-right {
             position: fixed;
-            z-index: 1;
+            top: 0;
+            width: 180px; /* Increased width for better visibility */
+            height: 100vh;
+            background-size: contain;
+            background-repeat: repeat-y;
             pointer-events: none;
+            z-index: 1;
+            background-position: center;
         }
 
-        .floral-top-left {
-            top: 0;
+        .floral-left {
             left: 0;
-            width: 250px;
-            height: 250px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M10 10 Q30 5 40 20 T60 40 Q50 60 40 70 T20 80 Q10 60 5 40 T10 10" fill="%234a542a" opacity="0.3"/><circle cx="25" cy="25" r="4" fill="%23af0e1e"/><circle cx="45" cy="35" r="3" fill="%23f3a6a0"/><circle cx="35" cy="55" r="3.5" fill="%2335465e"/><path d="M15 15 L25 35 L20 45" stroke="%234a542a" stroke-width="1.5" fill="none" opacity="0.4"/></svg>') no-repeat;
-            background-size: contain;
+            background-image: url('images/flores-direita.png');
+            transform: scaleX(-1); /* Flip horizontally to create a mirror image */
         }
 
-        .floral-top-right {
-            top: 0;
+        .floral-right {
             right: 0;
-            width: 250px;
-            height: 250px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M190 10 Q170 5 160 20 T140 40 Q150 60 160 70 T180 80 Q190 60 195 40 T190 10" fill="%234a542a" opacity="0.3"/><circle cx="175" cy="25" r="4" fill="%23af0e1e"/><circle cx="155" cy="35" r="3" fill="%23f3a6a0"/><circle cx="165" cy="55" r="3.5" fill="%2335465e"/><path d="M185 15 L175 35 L180 45" stroke="%234a542a" stroke-width="1.5" fill="none" opacity="0.4"/></svg>') no-repeat;
-            background-size: contain;
+            background-image: url('images/flores-direita.png');
         }
 
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(253, 251, 247, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px; /* Match the max-width of the container */
+            background: var(--cream);
+            padding: 20px 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         nav ul {
@@ -74,31 +74,34 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--green);
-            font-weight: 400;
+            color: var(--red);
             font-size: 14px;
-            letter-spacing: 0.5px;
+            font-weight: 400;
             transition: color 0.3s;
-            text-transform: uppercase;
         }
 
         nav a:hover, nav a.active {
-            color: var(--red);
+            color: var(--green);
+        }
+
+        /* Main content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 200px 60px;
+            position: relative;
+            z-index: 10;
         }
 
         .page {
             display: none;
-            padding: 120px 40px 80px;
-            min-height: 100vh;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 10;
         }
 
         .page.active {
@@ -107,164 +110,160 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
+        /* Typography */
         h1 {
             font-family: 'Brittany', cursive;
-            font-size: 80px;
+            font-size: 85px;
             text-align: center;
             color: var(--green);
             margin-bottom: 20px;
             font-weight: 400;
+            line-height: 1;
+            letter-spacing: 0.03em;
+            transform: scale(1.03, 1); /* Subtle horizontal stretch */
+            white-space: nowrap; /* Ensures the title stays on one line */
+            overflow: visible; /* Allows content to overflow if needed */
         }
 
         h2 {
             font-family: 'Brittany', cursive;
-            font-size: 60px;
+            font-size: 70px;
             text-align: center;
             color: var(--green);
-            margin-bottom: 40px;
+            margin-bottom: 60px;
             font-weight: 400;
         }
 
-        h3 {
-            font-family: 'Brittany', cursive;
-            font-size: 36px;
-            color: var(--green);
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .hero {
-            text-align: center;
-        }
-
+        /* Início page */
         .hero-image {
             width: 100%;
-            max-width: 800px;
-            height: 500px;
+            max-width: 600px;
+            height: 400px;
             margin: 40px auto;
-            border-radius: 8px;
+            display: block;
             object-fit: cover;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .date {
-            font-size: 24px;
-            color: var(--blue);
-            margin: 20px 0;
-            font-weight: 300;
+            border-radius: 4px;
         }
 
         .welcome-text {
-            max-width: 700px;
-            margin: 40px auto;
             text-align: center;
-            font-size: 18px;
+            font-size: 16px;
             line-height: 1.8;
-            color: var(--black);
+            margin: 40px 0;
         }
 
         .cta-button {
-            display: inline-block;
+            display: block;
+            width: 250px;
+            margin: 40px auto;
+            padding: 15px;
             background: var(--green);
             color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
+            text-align: center;
             text-decoration: none;
-            margin-top: 30px;
-            transition: all 0.3s;
+            border-radius: 50px;
             font-size: 16px;
+            transition: all 0.3s;
         }
 
         .cta-button:hover {
             background: var(--red);
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(175, 14, 30, 0.3);
         }
 
-        .event-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        /* Cerimónia page */
+        .events {
+            display: flex;
+            justify-content: space-around;
             gap: 60px;
             margin-top: 60px;
         }
 
-        .event-card {
+        .event {
             text-align: center;
-            padding: 40px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            flex: 1;
         }
 
         .event-icon {
-            font-size: 80px;
+            font-size: 60px;
             margin-bottom: 20px;
         }
 
+        .event h3 {
+            font-family: 'Brittany', cursive;
+            font-size: 40px;
+            color: var(--green);
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
         .event-time {
-            font-size: 32px;
-            color: var(--red);
-            font-weight: 700;
-            margin: 15px 0;
+            font-size: 28px;
+            font-weight: 300;
+            margin: 10px 0;
         }
 
         .event-location {
-            font-size: 18px;
-            color: var(--blue);
-            margin-top: 10px;
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0 20px;
         }
 
         .event-button {
             display: inline-block;
+            padding: 10px 30px;
             background: var(--pink);
             color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
             text-decoration: none;
-            margin-top: 25px;
-            transition: all 0.3s;
+            border-radius: 50px;
             font-size: 14px;
+            transition: all 0.3s;
         }
 
         .event-button:hover {
             background: var(--red);
-            transform: translateY(-2px);
         }
 
-        .hotel-grid {
+        /* Onde ficar page */
+        .info-text {
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hotels {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
             margin-top: 60px;
         }
 
-        .hotel-card {
+        .hotel {
             text-align: center;
-            padding: 30px 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-        }
-
-        .hotel-card:hover {
-            transform: translateY(-5px);
         }
 
         .hotel-icon {
             font-size: 50px;
-            color: var(--green);
             margin-bottom: 15px;
         }
 
         .hotel-name {
-            font-size: 18px;
             font-weight: 700;
-            color: var(--blue);
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .hotel-location {
+            font-size: 14px;
+            color: #666;
             margin-bottom: 5px;
         }
 
@@ -274,79 +273,79 @@
             font-style: italic;
         }
 
-        .info-text {
-            max-width: 800px;
-            margin: 0 auto 40px;
+        /* Presentes page */
+        .presentes-content {
+            max-width: 600px;
+            margin: 0 auto;
             text-align: center;
-            font-size: 16px;
-            line-height: 1.8;
-            color: var(--black);
-        }
-
-        .presentes-container {
-            max-width: 700px;
-            margin: 60px auto;
-            padding: 50px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
         }
 
         .presentes-text {
-            text-align: center;
             font-size: 16px;
             line-height: 1.8;
             margin-bottom: 40px;
-            color: var(--black);
         }
 
         .bank-details {
-            background: var(--cream);
+            background: white;
             padding: 30px;
             border-radius: 8px;
             margin-bottom: 30px;
+            text-align: left;
         }
 
         .bank-item {
-            margin: 15px 0;
-            font-size: 15px;
+            margin: 20px 0;
         }
 
         .bank-label {
             font-weight: 700;
             color: var(--green);
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
 
         .bank-value {
             font-family: 'Courier New', monospace;
+            font-size: 15px;
             color: var(--blue);
-            font-size: 16px;
+            background: var(--cream);
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .message-label {
+            font-weight: 700;
+            color: var(--green);
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+            font-size: 14px;
         }
 
         .message-box {
             width: 100%;
             min-height: 120px;
             padding: 15px;
-            border: 2px solid var(--green);
+            border: 2px solid #ddd;
             border-radius: 8px;
             font-family: 'Lato', sans-serif;
             font-size: 15px;
             resize: vertical;
-            margin-top: 20px;
         }
 
         .message-box:focus {
             outline: none;
-            border-color: var(--red);
+            border-color: var(--green);
         }
 
         .send-button {
             background: var(--green);
             color: white;
             border: none;
-            padding: 15px 40px;
+            padding: 12px 40px;
             border-radius: 50px;
             font-size: 16px;
             cursor: pointer;
@@ -359,183 +358,219 @@
             transform: translateY(-2px);
         }
 
+        /* RSVP page */
         iframe {
             width: 100%;
-            height: 1200px;
+            height: 1000px;
             border: none;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
-
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .photo-gallery img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
             border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
         }
 
-        .photo-gallery img:hover {
-            transform: scale(1.05);
-        }
-
+        /* Mobile responsive */
         @media (max-width: 768px) {
-            h1 { font-size: 50px; }
-            h2 { font-size: 40px; }
-            nav { padding: 15px 20px; }
-            nav ul { gap: 15px; }
-            nav a { font-size: 12px; }
-            .page { padding: 100px 20px 60px; }
-            .event-container { grid-template-columns: 1fr; gap: 30px; }
-            .hero-image { height: 300px; }
-            .floral-top-left, .floral-top-right { width: 150px; height: 150px; }
-            .presentes-container { padding: 30px 20px; }
+            .floral-left, .floral-right {
+                width: 80px;
+            }
+
+            nav {
+                width: 100%;
+                padding: 20px 10px;
+            }
+
+            .container {
+                padding: 100px 100px 60px;
+            }
+
+            h1 {
+                font-size: 45px;
+                letter-spacing: 0.02em;
+                /* Maintain single line properties */
+                white-space: nowrap;
+                overflow: visible;
+            }
+
+            h2 {
+                font-size: 45px;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .events {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .hotels {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .floral-left, .floral-right {
+                display: none;
+            }
+
+            nav {
+                width: 100%;
+            }
+
+            .container {
+                padding: 100px 20px 40px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="floral-corner floral-top-left"></div>
-    <div class="floral-corner floral-top-right"></div>
+    <div class="floral-left"></div>
+    <div class="floral-right"></div>
 
     <nav>
         <ul>
             <li><a href="#inicio" onclick="showPage('inicio')" class="active">Início</a></li>
             <li><a href="#cerimonia" onclick="showPage('cerimonia')">Cerimónia e Festa</a></li>
-            <li><a href="#onde-ficar" onclick="showPage('onde-ficar')">Onde Ficar</a></li>
+            <li><a href="#onde-ficar" onclick="showPage('onde-ficar')">Onde ficar</a></li>
             <li><a href="#presentes" onclick="showPage('presentes')">Presentes</a></li>
-            <li><a href="#rsvp" onclick="showPage('rsvp')">Confirmar Presença</a></li>
+            <li><a href="#rsvp" onclick="showPage('rsvp')">Confirmar presença</a></li>
         </ul>
     </nav>
 
-    <!-- INÍCIO -->
-    <div id="inicio" class="page active">
-        <div class="hero">
+    <div class="container">
+        <!-- INÍCIO -->
+        <div id="inicio" class="page active">
             <h1>Bárbara & Tomás</h1>
-            <p class="date">1 de Agosto de 2026 • Torres Vedras</p>
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect fill='%23e8e3db' width='800' height='500'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='20' fill='%234a542a' text-anchor='middle' dy='.3em'%3ESua foto principal aqui%3C/text%3E%3C/svg%3E" alt="Bárbara e Tomás" class="hero-image">
+            
+            <img src="images/casa-da-bolota-babsetomas.jpg" alt="Bárbara e Tomás" class="hero-image">
+            
             <div class="welcome-text">
                 <p>Estamos muito felizes por poder partilhar este dia tão especial convosco!</p>
                 <p>Aqui podem encontrar a maioria das informações, mas se tiverem alguma questão.... vamos combinar essa cerveja! 🍺</p>
             </div>
+            
             <a href="#rsvp" onclick="showPage('rsvp')" class="cta-button">Vamos para a festa!</a>
         </div>
-    </div>
 
-    <!-- CERIMÓNIA E FESTA -->
-    <div id="cerimonia" class="page">
-        <h2>Cerimónia e Festa</h2>
-        <div class="event-container">
-            <div class="event-card">
-                <div class="event-icon">⛪</div>
-                <h3>Cerimónia</h3>
-                <p class="event-time">14h</p>
-                <p class="event-location">Igreja de São Mamede da Ventosa</p>
-                <a href="https://maps.google.com/?q=Igreja+de+São+Mamede+da+Ventosa" target="_blank" class="event-button">Como chegar</a>
-            </div>
-            <div class="event-card">
-                <div class="event-icon">🎉</div>
-                <h3>Festa</h3>
-                <p class="event-time">16h</p>
-                <p class="event-location">Casa da Bolota</p>
-                <a href="https://maps.google.com/?q=Casa+da+Bolota+Torres+Vedras" target="_blank" class="event-button">Como chegar</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ONDE FICAR -->
-    <div id="onde-ficar" class="page">
-        <h2>Onde Ficar</h2>
-        <p class="info-text">Aqui podem encontrar uma lista de hotéis perto da Casa da Bolota, sugerimos que também procurem AirBnb ou outras casa para alugar. Se precisarem de ajuda, não hesitem em falar connosco.</p>
-        
-        <div class="hotel-grid">
-            <div class="hotel-card">
-                <div class="hotel-icon">🏨</div>
-                <div class="hotel-name">Hotel Stay</div>
-                <div>Torres Vedras</div>
-                <div class="hotel-distance">~ 10 Km</div>
-            </div>
-            <div class="hotel-card">
-                <div class="hotel-icon">🏨</div>
-                <div class="hotel-name">Dolce CampoReal</div>
-                <div>Catefica</div>
-                <div class="hotel-distance">~ 10 Km</div>
-            </div>
-            <div class="hotel-card">
-                <div class="hotel-icon">🏨</div>
-                <div class="hotel-name">Hotel GolfMar</div>
-                <div>Vimeiro</div>
-                <div class="hotel-distance">~ 15 Km</div>
-            </div>
-            <div class="hotel-card">
-                <div class="hotel-icon">🏨</div>
-                <div class="hotel-name">Hotel Santa Cruz</div>
-                <div>Santa Cruz</div>
-                <div class="hotel-distance">~ 12 Km</div>
-            </div>
-            <div class="hotel-card">
-                <div class="hotel-icon">🏨</div>
-                <div class="hotel-name">Pátio da Figueira</div>
-                <div>Gibraltar</div>
-                <div class="hotel-distance">~ 6 Km</div>
-            </div>
-            <div class="hotel-card">
-                <div class="hotel-icon">🏨</div>
-                <div class="hotel-name">Hotel Praia Azul</div>
-                <div>Silveira</div>
-                <div class="hotel-distance">~ 10 Km</div>
-            </div>
-            <div class="hotel-card">
-                <div class="hotel-icon">🏨</div>
-                <div class="hotel-name">Monte do Carmo</div>
-                <div>Barril</div>
-                <div class="hotel-distance">~ 8 Km</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- PRESENTES -->
-    <div id="presentes" class="page">
-        <h2>Presentes</h2>
-        <div class="presentes-container">
-            <p class="presentes-text">
-                A vossa presença no nosso dia especial é o maior presente que poderíamos receber! 
-                Mas se desejarem contribuir para a nossa nova vida juntos, ficamos muito gratos. 
-                Abaixo encontram os nossos dados bancários e um espaço para deixarem uma mensagem carinhosa.
-            </p>
+        <!-- CERIMÓNIA E FESTA -->
+        <div id="cerimonia" class="page">
+            <h2>Cerimónia e Festa</h2>
             
-            <div class="bank-details">
-                <div class="bank-item">
-                    <span class="bank-label">IBAN Portugal:</span>
-                    <span class="bank-value">PT50 0023 0000 45677034609 94</span>
+            <div class="events">
+                <div class="event">
+                    <div class="event-icon">⛪</div>
+                    <h3>Cerimónia</h3>
+                    <p class="event-time">14h</p>
+                    <p class="event-location">Igreja de São Mamede da Ventosa</p>
+                    <a href="https://maps.google.com/?q=Igreja+de+São+Mamede+da+Ventosa" target="_blank" class="event-button">Como chegar</a>
                 </div>
-                <div class="bank-item">
-                    <span class="bank-label">IBAN Internacional:</span>
-                    <span class="bank-value">GB89 REVO 0099 7049 1801 90</span>
+                
+                <div class="event">
+                    <div class="event-icon">🎉</div>
+                    <h3>Festa</h3>
+                    <p class="event-time">16h</p>
+                    <p class="event-location">Casa da Bolota</p>
+                    <a href="https://maps.google.com/?q=Casa+da+Bolota+Torres+Vedras" target="_blank" class="event-button">Como chegar</a>
                 </div>
             </div>
+        </div>
 
-            <label class="bank-label" for="message">Deixe-nos uma mensagem:</label>
-            <textarea id="message" class="message-box" placeholder="Escreva aqui a vossa mensagem..."></textarea>
+        <!-- ONDE FICAR -->
+        <div id="onde-ficar" class="page">
+            <h2>Onde Ficar</h2>
             
-            <center>
+            <p class="info-text">Aqui podem encontrar uma lista de hotéis perto da Casa da Bolota, sugerimos que também procurem AirBnb ou outras casa para alugar.<br>Se precisarem de ajuda, não hesitem em falar connosco.</p>
+            
+            <div class="hotels">
+                <div class="hotel">
+                    <div class="hotel-icon">🏨</div>
+                    <div class="hotel-name">Hotel Stay</div>
+                    <div class="hotel-location">Torres Vedras</div>
+                    <div class="hotel-distance">~ 10 Km</div>
+                </div>
+                
+                <div class="hotel">
+                    <div class="hotel-icon">🏨</div>
+                    <div class="hotel-name">Dolce CampoReal</div>
+                    <div class="hotel-location">Catefica</div>
+                    <div class="hotel-distance">~ 10 Km</div>
+                </div>
+                
+                <div class="hotel">
+                    <div class="hotel-icon">🏨</div>
+                    <div class="hotel-name">Hotel GolfMar</div>
+                    <div class="hotel-location">Vimeiro</div>
+                    <div class="hotel-distance">~ 15 Km</div>
+                </div>
+                
+                <div class="hotel">
+                    <div class="hotel-icon">🏨</div>
+                    <div class="hotel-name">Hotel Santa Cruz</div>
+                    <div class="hotel-location">Santa Cruz</div>
+                    <div class="hotel-distance">~ 12 Km</div>
+                </div>
+                
+                <div class="hotel">
+                    <div class="hotel-icon">🏨</div>
+                    <div class="hotel-name">Pátio da Figueira</div>
+                    <div class="hotel-location">Gibraltar</div>
+                    <div class="hotel-distance">~ 6 Km</div>
+                </div>
+                
+                <div class="hotel">
+                    <div class="hotel-icon">🏨</div>
+                    <div class="hotel-name">Hotel Praia Azul</div>
+                    <div class="hotel-location">Silveira</div>
+                    <div class="hotel-distance">~ 10 Km</div>
+                </div>
+                
+                <div class="hotel">
+                    <div class="hotel-icon">🏨</div>
+                    <div class="hotel-name">Monte do Carmo</div>
+                    <div class="hotel-location">Barril</div>
+                    <div class="hotel-distance">~ 8 Km</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRESENTES -->
+        <div id="presentes" class="page">
+            <h2>Presentes</h2>
+            
+            <div class="presentes-content">
+                <p class="presentes-text">
+                    A vossa presença no nosso dia especial é o maior presente que poderíamos receber! 
+                    Mas se desejarem contribuir para a nossa nova vida juntos, ficamos muito gratos. 
+                    Abaixo encontram os nossos dados bancários e um espaço para deixarem uma mensagem carinhosa.
+                </p>
+                
+                <div class="bank-details">
+                    <div class="bank-item">
+                        <span class="bank-label">IBAN Portugal:</span>
+                        <span class="bank-value">PT50 0023 0000 45677034609 94</span>
+                    </div>
+                    <div class="bank-item">
+                        <span class="bank-label">IBAN Internacional:</span>
+                        <span class="bank-value">GB89 REVO 0099 7049 1801 90</span>
+                    </div>
+                </div>
+
+                <label class="message-label" for="message">Deixe-nos uma mensagem:</label>
+                <textarea id="message" class="message-box" placeholder="Escreva aqui a vossa mensagem..."></textarea>
+                
                 <button class="send-button" onclick="sendMessage()">Enviar Mensagem</button>
-            </center>
+            </div>
         </div>
-    </div>
 
-    <!-- CONFIRMAR PRESENÇA -->
-    <div id="rsvp" class="page">
-        <h2>Confirmar Presença</h2>
-        <p class="info-text">Por favor, confirme a vossa presença até 1 de Julho de 2026.</p>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdAIanHe8o1kdwTKBZQ_DqSh8vSRbcDCqUqOxJVvjUQJIX_gg/viewform?embedded=true"></iframe>
+        <!-- CONFIRMAR PRESENÇA -->
+        <div id="rsvp" class="page">
+            <h2>Confirmar Presença</h2>
+            <p class="info-text">Por favor, confirme a vossa presença até 1 de Julho de 2026.</p>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdAIanHe8o1kdwTKBZQ_DqSh8vSRbcDCqUqOxJVvjUQJIX_gg/viewform?embedded=true"></iframe>
+        </div>
     </div>
 
     <script>
@@ -547,7 +582,7 @@
             navLinks.forEach(link => link.classList.remove('active'));
             
             document.getElementById(pageId).classList.add('active');
-            event.target.classList.add('active');
+            document.querySelector(`a[href="#${pageId}"]`).classList.add('active');
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -561,8 +596,7 @@
             
             const subject = 'Mensagem para Bárbara e Tomás';
             const body = encodeURIComponent(message);
-            
-            window.location.href = `mailto:barbara.tomas.wedding@gmail.com?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:your-email@example.com?subject=${subject}&body=${body}`;
             
             alert('Obrigado pela vossa mensagem! O seu cliente de email irá abrir.');
         }
