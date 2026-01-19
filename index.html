@@ -26,18 +26,24 @@
             --cream: #fdfbf7;
         }
 
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+
         body {
             font-family: 'Lato', sans-serif;
-            background-color: var(--cream);
+            background-color: #fff;
             color: #333;
             overflow-x: hidden;
+            height: 100%;
         }
 
         /* Floral borders - placeholders for your images */
         .floral-left, .floral-right {
             position: fixed;
             top: 0;
-            width: 180px; /* Increased width for better visibility */
+            width: 200px; /* Increased width for better visibility */
             height: 100vh;
             background-size: contain;
             background-repeat: repeat-y;
@@ -64,7 +70,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: 900px; /* Match the max-width of the container */
-            background: var(--cream);
+            background: #fff;
             padding: 20px 0;
             z-index: 100;
         }
@@ -117,14 +123,14 @@
         /* Typography */
         h1 {
             font-family: 'Brittany', cursive;
-            font-size: 85px;
+            font-size: 70px;
             text-align: center;
             color: var(--green);
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             font-weight: 400;
             line-height: 1;
-            letter-spacing: 0.03em;
-            transform: scale(1.03, 1); /* Subtle horizontal stretch */
+            letter-spacing: 0.02em;
+            transform: scale(1.02, 1); /* Very subtle horizontal stretch */
             white-space: nowrap; /* Ensures the title stays on one line */
             overflow: visible; /* Allows content to overflow if needed */
         }
@@ -141,9 +147,9 @@
         /* Início page */
         .hero-image {
             width: 100%;
-            max-width: 600px;
-            height: 400px;
-            margin: 40px auto;
+            max-width: 450px;
+            height: 300px;
+            margin: 30px auto;
             display: block;
             object-fit: cover;
             border-radius: 4px;
@@ -186,11 +192,17 @@
         .event {
             text-align: center;
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .event-icon {
-            font-size: 60px;
+            width: 200px;
+            height: 200px;
             margin-bottom: 20px;
+            object-fit: contain;
+            display: inline-block;
         }
 
         .event h3 {
@@ -222,6 +234,7 @@
             border-radius: 50px;
             font-size: 14px;
             transition: all 0.3s;
+            margin-top: auto;
         }
 
         .event-button:hover {
@@ -382,8 +395,8 @@
             }
 
             h1 {
-                font-size: 45px;
-                letter-spacing: 0.02em;
+                font-size: 38px;
+                letter-spacing: 0.01em;
                 /* Maintain single line properties */
                 white-space: nowrap;
                 overflow: visible;
@@ -399,11 +412,6 @@
 
             nav a {
                 font-size: 12px;
-            }
-
-            .events {
-                flex-direction: column;
-                gap: 40px;
             }
 
             .hotels {
@@ -423,6 +431,7 @@
             .container {
                 padding: 100px 20px 40px;
             }
+
         }
     </style>
 </head>
@@ -457,11 +466,11 @@
 
         <!-- CERIMÓNIA E FESTA -->
         <div id="cerimonia" class="page">
-            <h2>Cerimónia e Festa</h2>
+            <h1>Cerimónia e Festa</h1>
             
             <div class="events">
                 <div class="event">
-                    <div class="event-icon">⛪</div>
+                    <img src="images/church-icon.png" alt="Ícone de igreja" class="event-icon">
                     <h3>Cerimónia</h3>
                     <p class="event-time">14h</p>
                     <p class="event-location">Igreja de São Mamede da Ventosa</p>
@@ -469,7 +478,7 @@
                 </div>
                 
                 <div class="event">
-                    <div class="event-icon">🎉</div>
+                    <img src="images/festa-icone.png" alt="Ícone de festa" class="event-icon">
                     <h3>Festa</h3>
                     <p class="event-time">16h</p>
                     <p class="event-location">Casa da Bolota</p>
@@ -480,7 +489,7 @@
 
         <!-- ONDE FICAR -->
         <div id="onde-ficar" class="page">
-            <h2>Onde Ficar</h2>
+            <h1>Onde Ficar</h1>
             
             <p class="info-text">Aqui podem encontrar uma lista de hotéis perto da Casa da Bolota, sugerimos que também procurem AirBnb ou outras casa para alugar.<br>Se precisarem de ajuda, não hesitem em falar connosco.</p>
             
@@ -538,13 +547,13 @@
 
         <!-- PRESENTES -->
         <div id="presentes" class="page">
-            <h2>Presentes</h2>
+            <h1>Presentes</h1>
             
             <div class="presentes-content">
                 <p class="presentes-text">
                     A vossa presença no nosso dia especial é o maior presente que poderíamos receber! 
                     Mas se desejarem contribuir para a nossa nova vida juntos, ficamos muito gratos. 
-                    Abaixo encontram os nossos dados bancários e um espaço para deixarem uma mensagem carinhosa.
+                    Abaixo encontram os nossos dados bancários e espaço para nos deixarem uma mensagem.
                 </p>
                 
                 <div class="bank-details">
@@ -558,18 +567,20 @@
                     </div>
                 </div>
 
-                <label class="message-label" for="message">Deixe-nos uma mensagem:</label>
-                <textarea id="message" class="message-box" placeholder="Escreva aqui a vossa mensagem..."></textarea>
-                
-                <button class="send-button" onclick="sendMessage()">Enviar Mensagem</button>
+                <form action="https://formspree.io/f/xvzzrrje" method="POST">
+                    <label class="message-label" for="message">Deixa-nos uma mensagem:</label>
+                    <textarea id="message" name="mensagem" class="message-box" placeholder="Escreva aqui a vossa mensagem..." required></textarea>
+                    
+                    <button class="send-button" type="submit">Enviar Mensagem</button>
+                </form>
             </div>
         </div>
 
         <!-- CONFIRMAR PRESENÇA -->
         <div id="rsvp" class="page">
-            <h2>Confirmar Presença</h2>
+            <h1>Confirmar Presença</h1>
             <p class="info-text">Por favor, confirme a vossa presença até 1 de Julho de 2026.</p>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdAIanHe8o1kdwTKBZQ_DqSh8vSRbcDCqUqOxJVvjUQJIX_gg/viewform?embedded=true"></iframe>
+            <iframe id="rsvp-form" data-src="https://docs.google.com/forms/d/e/1FAIpQLScz5n9OFB-VQmZdyAfeTkxQ4IYhT7GZ5jEXP8ePOH3WDCWKSg/viewform?embedded=true"></iframe>
         </div>
     </div>
 
@@ -583,22 +594,15 @@
             
             document.getElementById(pageId).classList.add('active');
             document.querySelector(`a[href="#${pageId}"]`).classList.add('active');
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
 
-        function sendMessage() {
-            const message = document.getElementById('message').value;
-            if (message.trim() === '') {
-                alert('Por favor, escreva uma mensagem antes de enviar.');
-                return;
+            if (pageId === 'rsvp') {
+                const iframe = document.getElementById('rsvp-form');
+                if (iframe && !iframe.src) {
+                    iframe.src = iframe.dataset.src;
+                }
             }
             
-            const subject = 'Mensagem para Bárbara e Tomás';
-            const body = encodeURIComponent(message);
-            window.location.href = `mailto:your-email@example.com?subject=${subject}&body=${body}`;
-            
-            alert('Obrigado pela vossa mensagem! O seu cliente de email irá abrir.');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         window.addEventListener('hashchange', () => {
