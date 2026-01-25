@@ -47,7 +47,7 @@
         .floral-left, .floral-right {
             position: fixed;
             top: 0;
-            width: 200px; /* Increased width for better visibility */
+            width: 320px; /* Increased width for better visibility */
             height: 100vh;
             background-size: contain;
             background-repeat: repeat-y;
@@ -306,6 +306,15 @@
             margin-bottom: 2px;
         }
 
+        .hotel-name a {
+            color: var(--green);
+            text-decoration: none;
+        }
+
+        .hotel-name a:hover {
+            color: var(--red);
+        }
+
         .hotel-location {
             font-size: 14px;
             color: #666;
@@ -463,6 +472,14 @@
                 font-size: 12px;
             }
 
+            .events {
+                gap: 12px;
+            }
+
+            .event {
+                flex: 0 1 320px;
+            }
+
             .hotels {
                 grid-template-columns: 1fr;
             }
@@ -580,7 +597,14 @@
                     <img src="images/hotel-icon.png" alt="Ícone de hotel" class="hotel-icon">
                     <div class="hotel-name"><a href="https://www.santacruznaturehouse.com/" target="_blank" rel="noopener">Santa Cruz Nature House</a></div>
                     <div class="hotel-location">Santa Cruz</div>
-                    <div class="hotel-distance">~ 12 Km</div>
+                    <div class="hotel-distance">~ 10 Km</div>
+                </div>
+
+                <div class="hotel">
+                    <img src="images/hotel-icon.png" alt="Ícone de hotel" class="hotel-icon">
+                    <div class="hotel-name"><a href="https://www.patiodafigueira.com/" target="_blank" rel="noopener">Pátio da Figueira</a></div>
+                    <div class="hotel-location">Gibraltar</div>
+                    <div class="hotel-distance">~ 6 Km</div>
                 </div>
                 
                 <div class="hotel">
@@ -594,21 +618,14 @@
                     <img src="images/hotel-icon.png" alt="Ícone de hotel" class="hotel-icon">
                     <div class="hotel-name"><a href="https://www.booking.com/hotel/pt/santa-cruz.pt-pt.html?aid=356980&label=gog235jc-10CAsouwFCCnNhbnRhLWNydXpIH1gDaLsBiAEBmAEzuAEHyAEM2AED6AEB-AEBiAIBqAIBuAKArtjLBsACAdICJGEwM2RlNDk3LWQ2ZjQtNDI1My1hYzg1LWJmZTU4ZGIyNWJjMdgCAeACAQ&sid=53e642bc13d5226f1ac33ecdbebbc54a&age=0&all_sr_blocks=3911611_95163634_0_41_0_384020&checkin=2026-02-01&checkout=2026-02-02&dest_id=-2175337&dest_type=city&dist=0&group_adults=2&group_children=1&hapos=1&highlighted_blocks=3911611_95163634_0_41_0_384020&hpos=1&matching_block_id=3911611_95163634_0_41_0_384020&no_rooms=1&req_adults=2&req_age=0&req_children=1&room1=A%2CA%2C0&sb_price_type=total&sr_order=popularity&sr_pri_blocks=3911611_95163634_0_41_0_384020_11250&srepoch=1769346824&srpvid=a0a65d0175330573&type=total&ucfs=1&" target="_blank" rel="noopener">Hotel Santa Cruz</a></div>
                     <div class="hotel-location">Santa Cruz</div>
-                    <div class="hotel-distance">~ 12 Km</div>
-                </div>
-                
-                <div class="hotel">
-                    <img src="images/hotel-icon.png" alt="Ícone de hotel" class="hotel-icon">
-                    <div class="hotel-name"><a href="https://www.patiodafigueira.com/" target="_blank" rel="noopener">Pátio da Figueira</a></div>
-                    <div class="hotel-location">Gibraltar</div>
-                    <div class="hotel-distance">~ 6 Km</div>
+                    <div class="hotel-distance">~ 10 Km</div>
                 </div>
                 
                 <div class="hotel">
                     <img src="images/hotel-icon.png" alt="Ícone de hotel" class="hotel-icon">
                     <div class="hotel-name"><a href="https://praiaazul.com/" target="_blank" rel="noopener">Hotel Praia Azul</a></div>
                     <div class="hotel-location">Silveira</div>
-                    <div class="hotel-distance">~ 10 Km</div>
+                    <div class="hotel-distance">~ 8 Km</div>
                 </div>
                 
                 <div class="hotel">
@@ -616,6 +633,13 @@
                     <div class="hotel-name"><a href="https://montedocarmo.com/" target="_blank" rel="noopener">Monte do Carmo</a></div>
                     <div class="hotel-location">Barril</div>
                     <div class="hotel-distance">~ 8 Km</div>
+                </div>
+
+                <div class="hotel">
+                    <img src="images/hotel-icon.png" alt="Ícone de hotel" class="hotel-icon">
+                    <div class="hotel-name"><a href="https://www.pousadasjuventude.pt/pt/pousadas/pousada-de-santa-cruz/" target="_blank" rel="noopener">Pousada da Juventude</a></div>
+                    <div class="hotel-location">Santa Cruz</div>
+                    <div class="hotel-distance">~ 10 Km</div>
                 </div>
             </div>
         </div>
