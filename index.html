@@ -560,11 +560,11 @@
 
     <nav>
         <ul>
-            <li><a href="#inicio" onclick="showPage('inicio')" class="active">Início</a></li>
-            <li><a href="#cerimonia" onclick="showPage('cerimonia')">Cerimónia e Festa</a></li>
-            <li><a href="#onde-ficar" onclick="showPage('onde-ficar')">Onde ficar</a></li>
-            <li><a href="#presentes" onclick="showPage('presentes')">Presentes</a></li>
-            <li><a href="#rsvp" onclick="showPage('rsvp')">Confirmar presença</a></li>
+            <li><a href="#inicio" onclick="showPage('inicio', event)" class="active">Início</a></li>
+            <li><a href="#cerimonia" onclick="showPage('cerimonia', event)">Cerimónia e Festa</a></li>
+            <li><a href="#onde-ficar" onclick="showPage('onde-ficar', event)">Onde ficar</a></li>
+            <li><a href="#presentes" onclick="showPage('presentes', event)">Presentes</a></li>
+            <li><a href="#rsvp" onclick="showPage('rsvp', event)">Confirmar presença</a></li>
         </ul>
     </nav>
 
@@ -584,7 +584,7 @@
                 <p>Aqui podem encontrar a maioria das informações, mas se tiverem alguma questão.... vamos combinar essa cerveja! 🍺</p>
             </div>
             
-            <a href="#rsvp" onclick="showPage('rsvp')" class="cta-button">Vamos para a festa!</a>
+            <a href="#rsvp" onclick="showPage('rsvp', event)" class="cta-button">Vamos para a festa!</a>
         </div>
 
         <!-- CERIMÓNIA E FESTA -->
@@ -730,7 +730,12 @@
             }
         }
 
-        function showPage(pageId) {
+        function showPage(pageId, event) {
+            if (event) {
+                event.preventDefault();
+                history.replaceState(null, '', `#${pageId}`);
+            }
+
             const target = document.getElementById(pageId);
             if (!target) return;
 
@@ -745,7 +750,7 @@
                 }
             }
 
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         const observer = new IntersectionObserver(
