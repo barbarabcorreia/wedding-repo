@@ -457,16 +457,17 @@
             .inicio-gallery {
                 grid-template-columns: 1fr;
                 justify-items: center;
+                align-items: center;
             }
 
             .inicio-photo {
-                max-width: 210px;
-                height: 130px;
+                max-width: 180px;
+                height: 110px;
                 margin: 0 auto;
             }
 
             .inicio-photo--featured {
-                height: 160px;
+                height: 140px;
                 margin: 0 auto;
             }
 
@@ -488,6 +489,12 @@
                 height: calc(100vh - var(--nav-offset));
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .page.active::-webkit-scrollbar {
+                display: none;
             }
 
             .events {
