@@ -421,13 +421,6 @@
             transform: translateY(-2px);
         }
 
-        /* RSVP page */
-        iframe {
-            width: 100%;
-            height: 1000px;
-            border: none;
-            border-radius: 8px;
-        }
 
         /* Cool.Brave page */
         .cb-intro {
@@ -901,9 +894,7 @@
             <li><a href="#cerimonia" onclick="showPage('cerimonia')">Cerimónia e Festa</a></li>
             <li><a href="#onde-ficar" onclick="showPage('onde-ficar')">Onde ficar</a></li>
             <li><a href="#presentes" onclick="showPage('presentes')">Presentes</a></li>
-            <li><a href="#cool-brave" onclick="showPage('cool-brave')">Cool.Brave</a></li>
-            <li><a href="#rsvp" onclick="showPage('rsvp')">Confirmar presença</a></li>
-        </ul>
+            <li><a href="#cool-brave" onclick="showPage('cool-brave')">Cool.Brave</a></li>        </ul>
     </nav>
 
     <div class="container">
@@ -922,7 +913,7 @@
                 <p>Aqui podem encontrar a maioria das informações, mas se tiverem alguma questão.... vamos combinar essa cerveja! 🍺</p>
             </div>
             
-            <a href="#rsvp" onclick="showPage('rsvp')" class="cta-button">Vamos para a festa!</a>
+            <a href="#fotografias" onclick="showPage('fotografias')" class="cta-button">Ver as fotografias</a>
         </div>
 
         <!-- FOTOGRAFIAS -->
@@ -1139,14 +1130,8 @@
                 <p>
                     Se tiverem interesse, falem com a Bárbara ou com o Tomás
                     e nós fazemos a ponte com a equipa da Cool.Brave.
-                </p>            </div>
-        </div>
-
-        <!-- CONFIRMAR PRESENÇA -->
-        <div id="rsvp" class="page">
-            <h1>Confirmar Presença</h1>
-            <p class="info-text">Por favor, confirmem a vossa presença até 1 de Junho de 2026.</p>
-            <iframe id="rsvp-form" data-src="https://docs.google.com/forms/d/e/1FAIpQLScz5n9OFB-VQmZdyAfeTkxQ4IYhT7GZ5jEXP8ePOH3WDCWKSg/viewform?embedded=true"></iframe>
+                </p>
+            </div>
         </div>
     </div>
 
@@ -1169,13 +1154,6 @@
             pages.forEach(page => page.classList.remove('active'));
             target.classList.add('active');
             setActiveNav(pageId);
-
-            if (pageId === 'rsvp') {
-                const iframe = document.getElementById('rsvp-form');
-                if (iframe && !iframe.src) {
-                    iframe.src = iframe.dataset.src;
-                }
-            }
 
             target.scrollTop = 0;
         }
