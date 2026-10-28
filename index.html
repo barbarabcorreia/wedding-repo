@@ -429,6 +429,137 @@
             border-radius: 8px;
         }
 
+        /* Cool.Brave page */
+        .cb-intro {
+            max-width: 680px;
+            margin: 0 auto var(--section-gap);
+            text-align: center;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .cb-block {
+            max-width: 760px;
+            margin: 0 auto 48px;
+            text-align: center;
+        }
+
+        .cb-block h3, .cb-col h3, .cb-join h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 26px;
+            font-weight: 400;
+            color: var(--green);
+            margin-bottom: 14px;
+        }
+
+        .cb-block p, .cb-col p, .cb-join p {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .cb-more {
+            margin-top: 16px;
+        }
+
+        .cb-link {
+            color: var(--red);
+            text-decoration: none;
+            border-bottom: 1px solid var(--pink);
+        }
+
+        .cb-link:hover {
+            color: var(--green);
+            border-color: var(--green);
+        }
+
+        /* Já fizemos / Vamos fazer */
+        .cb-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 760px;
+            margin: 0 auto 56px;
+        }
+
+        .cb-col {
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .cb-col h3 {
+            font-size: 22px;
+            white-space: nowrap;
+        }
+
+        .cb-col + .cb-col {
+            border-left: 1px solid var(--pink);
+        }
+
+        .cb-list {
+            list-style: none;
+            margin-top: 14px;
+        }
+
+        .cb-list li {
+            font-size: 16px;
+            color: var(--blue);
+            padding: 10px 0;
+        }
+
+        .cb-list li + li::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--pink);
+            margin: 0 auto 18px;
+        }
+
+        .cb-who {
+            display: block;
+            font-size: 13px;
+            font-style: italic;
+            color: var(--red);
+        }
+
+        /* Querem juntar-se */
+        .cb-join {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 36px 32px;
+            border: 2px solid var(--pink);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .cb-join p + p {
+            margin-top: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .cb-split {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .cb-col {
+                padding: 0;
+            }
+
+            .cb-col + .cb-col {
+                border-left: none;
+                border-top: 1px solid var(--pink);
+                padding-top: 32px;
+            }
+
+            .cb-join {
+                padding: 24px 16px 20px;
+            }
+
+            .cb-block h3, .cb-col h3, .cb-join h3 {
+                font-size: 22px;
+            }
+        }
+
         /* Mobile responsive */
         @media (max-width: 768px) {
             :root {
@@ -604,6 +735,7 @@
             <li><a href="#cerimonia" onclick="showPage('cerimonia')">Cerimónia e Festa</a></li>
             <li><a href="#onde-ficar" onclick="showPage('onde-ficar')">Onde ficar</a></li>
             <li><a href="#presentes" onclick="showPage('presentes')">Presentes</a></li>
+            <li><a href="#cool-brave" onclick="showPage('cool-brave')">Cool.Brave</a></li>
             <li><a href="#rsvp" onclick="showPage('rsvp')">Confirmar presença</a></li>
         </ul>
     </nav>
@@ -748,6 +880,62 @@
                     <button class="send-button" type="submit">Enviar Mensagem</button>
                 </form>
             </div>
+        </div>
+
+        <!-- COOL.BRAVE -->
+        <div id="cool-brave" class="page">
+            <h1>Cool.Brave</h1>
+
+            <p class="cb-intro">
+                Começar esta nova etapa juntos também passa por olhar à nossa volta.
+                Este ano decidimos ajudar a Cool.Brave, uma iniciativa da Pressley Ridge na Amadora,
+                e gostávamos muito de partilhar isto convosco.
+            </p>
+
+            <div class="cb-block">
+                <h3>O projeto</h3>
+                <p>
+                    A Cool.Brave – Despert'ARTE trabalha com crianças e jovens dos 6 aos 25 anos
+                    do Bairro da Estrada Militar do Alto da Damaia e da Reboleira. Através do desporto
+                    e da arte, ajuda-os a desenvolver competências para a vida, a acreditar no seu
+                    potencial e a participar ativamente na comunidade.
+                </p>
+                <p class="cb-more">
+                    <a class="cb-link" href="https://www.pressleyridge.pt/pt/pages/coolbrave-e9g-ipdj-programa-escolhas-inclusao-social" target="_blank" rel="noopener">Saber mais sobre a Cool.Brave →</a>
+                </p>
+            </div>
+
+            <div class="cb-split">
+                <div class="cb-col">
+                    <h3>O que já fizemos</h3>
+                    <p>Perguntámos o que fazia falta e doámos:</p>
+                    <ul class="cb-list">
+                        <li>Material desportivo</li>
+                        <li>Computadores portáteis</li>
+                        <li>Jogos de tabuleiro</li>
+                    </ul>
+                </div>
+                <div class="cb-col">
+                    <h3>O que vamos fazer</h3>
+                    <p>Agora queremos dar também o nosso tempo:</p>
+                    <ul class="cb-list">
+                        <li>Explicações escolares</li>
+                        <li>Atividade de rugby <span class="cb-who">com o Tomás</span></li>
+                        <li>Sessão sobre Inteligência Artificial <span class="cb-who">com a Bárbara</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cb-join">
+                <h3>Querem juntar-se a nós?</h3>
+                <p>
+                    Não é preciso ter experiência, só vontade e um bocadinho de tempo.
+                    Pode ser uma explicação, uma atividade, partilhar algo que saibam fazer ou doar material.
+                </p>
+                <p>
+                    Se tiverem interesse, falem com a Bárbara ou com o Tomás
+                    e nós fazemos a ponte com a equipa da Cool.Brave.
+                </p>            </div>
         </div>
 
         <!-- CONFIRMAR PRESENÇA -->
